@@ -5,7 +5,7 @@
 # Marcos Vinicius Phryston (mvpn)
 
 # Questao 1:
-  got = read.csv("GOTFinal.csv", header = TRUE)
+  got = read.csv("GOTFinal.csv", header = TRUE)#getwd()
   
   print(got)
 
@@ -64,4 +64,68 @@
       }
       funcaoPrint()
 #Questao 5:
+      #Funcao que pega o maior e o menor episodio de uma certa temporada (de acordo com a nota)
+      funcaoEpiPorTemp = function(){
+        TITULO = c()
+        NOTA = c()
+        TEMPORADA = c()
+        for (temporada_atual in 1:8){
+          indiceInit = 0
+          indiceFinal = 0
+          indexAtual = 0
+          jaAchou = FALSE
+          for (x in got$Temporada){
+            indexAtual = indexAtual + 1
+            if (x == temporada_atual)
+              if (jaAchou == FALSE){
+                indiceInit = indexAtual
+                jaAchou = TRUE
+              }
+              else
+                indiceFinal = indexAtual
+          }
+          arrayEp = episodios[indiceInit:indiceFinal]
+          arrayNotas = got[, 3]
+          arrayNotas = arrayNotas[indiceInit:indiceFinal]
+          #BubbleSort
+            indiceX = 0
+            indiceJ = 0
+            for (i in arrayNotas){
+              indiceX = indiceX + 1
+              indiceJ = 0
+              for (j in arrayNotas){
+                indiceJ = indiceJ + 1
+                
+                if (arrayNotas[indiceX] < arrayNotas[indiceJ]){
+                  aux = arrayNotas[indiceX]
+                  arrayNotas[indiceX] = arrayNotas[indiceJ]
+                  arrayNotas[indiceJ] = aux
+                  aux2 = arrayEp[indiceX]
+                  arrayEp[indiceX] = arrayEp[indiceJ]
+                  arrayEp[indiceJ] = aux2
+                }
+              }
+            }
+          #Adicionando nos arrays para criar o dataframe
+            TITULO[(temporada_atual*2)-1] = arrayEp[1]
+            TITULO[(temporada_atual*2)] = arrayEp[length(arrayEp)]
+            #print(arrayEp[1])
+            #print(TITULO[(temporada_atual*2)-1])
+            
+            NOTA[(temporada_atual*2)-1] = arrayNotas[1]
+            NOTA[(temporada_atual*2)] = arrayNotas[length(arrayNotas)]
+            
+            TEMPORADA[(temporada_atual*2)-1] = temporada_atual
+            TEMPORADA[(temporada_atual*2)] = temporada_atual
+        
+        }
+        
+        df = data.frame(TITULO, NOTA, TEMPORADA)
+        print(df)
+      }
+      
+      funcaoEpiPorTemp()
+      
+      
+      
       
