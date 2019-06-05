@@ -183,4 +183,44 @@
       print(sprintf("A media das notas dos episodios em que Brienne aparece e: %.1f",mediaBrienne))
 
 #Questao 8:
+      funcaoDeRepetidos4Temp  = function(){
+        stringComTodoMundo = ""
+        for (x in 31:40){
+            #strsplit(as.character(arrayPers[x]), split=",")
+          stringComTodoMundo = paste0(stringComTodoMundo, as.character(arrayPers[x]))
+          stringComTodoMundo = paste0(stringComTodoMundo, ",")
+        }
+        arrayTodosOsPersonagens = unlist(strsplit(stringComTodoMundo, ","))
+        arrayPersonagens4 = arrayTodosOsPersonagens
+        arrayTodosOsPersonagens = unique(arrayTodosOsPersonagens)
+  
+        arrayRepetido = c()
+        for (x in 1:41){
+          arrayRepetido[x] = 0
+        }
+        indexAtual = 0
+        for (x in arrayTodosOsPersonagens){
+          indexAtual = indexAtual + 1
+          for (y in arrayPersonagens4){
+            if (x == y){
+              arrayRepetido[indexAtual] = arrayRepetido[indexAtual] + 1
+            }
+          }
+        }
+        #print(arrayRepetido)
+        arrayDoRetorno = c()
+        contador = 0
+        indexAtual = 0
+        for (x in arrayRepetido){
+          indexAtual = indexAtual + 1
+          if (x == 1){
+            #print(arrayTodosOsPersonagens[indexAtual])
+            contador = contador + 1
+            arrayDoRetorno[contador] = arrayTodosOsPersonagens[indexAtual]
+          }
+        }
+        return (arrayDoRetorno)
+      }
+      print(funcaoDeRepetidos4Temp())
+#Questao 9:
       
