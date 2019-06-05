@@ -125,3 +125,44 @@
       }
       
       funcaoEpiPorTemp()
+      
+#Questao 6:
+      menorDP = function(){
+        arrayDosDP = c()
+        for (temporada_atual in 1:8){
+          indiceInit = 0
+          indiceFinal = 0
+          indexAtual = 0
+          jaAchou = FALSE
+          for (x in got$Temporada){
+            indexAtual = indexAtual + 1
+            if (x == temporada_atual)
+              if (jaAchou == FALSE){
+                indiceInit = indexAtual
+                jaAchou = TRUE
+              }
+            else
+              indiceFinal = indexAtual
+          }
+          arrayAudiencia = got[, 5]
+          arrayAudiencia = arrayAudiencia[indiceInit:indiceFinal]
+          desvPad = sd(arrayAudiencia)
+          arrayDosDP[temporada_atual] = desvPad
+        }
+        melhorTemp = 0
+        indexAtual = 0
+        menorDP = Inf
+        for(x in arrayDosDP){
+          indexAtual = indexAtual + 1
+          if (x < menorDP){
+            menorDP = x
+            melhorTemp = indexAtual
+          }
+        }
+        #print(arrayDosDP)
+        return (melhorTemp)
+      }
+      print(sprintf("A temporada com menor desvio padrao e: %d", menorDP()))
+      
+#Questao 7:
+      
