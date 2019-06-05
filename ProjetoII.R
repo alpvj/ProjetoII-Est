@@ -59,7 +59,7 @@
         for (x in notas){
           index_x = index_x + 1
           if (x >= 9)
-            print(factor(episodios[index_x]))
+            print(as.character(episodios[index_x]))
         }
       }
       funcaoPrint()
@@ -107,9 +107,9 @@
               }
             }
           #Adicionando nos arrays para criar o dataframe
-            TITULO[(temporada_atual*2)-1] = arrayEp[1]
-            TITULO[(temporada_atual*2)] = arrayEp[length(arrayEp)]
-            #print(arrayEp[1])
+            TITULO[(temporada_atual*2)-1] = as.character(arrayEp[1])
+            TITULO[(temporada_atual*2)] = as.character(arrayEp[length(arrayEp)])
+            #print(arrayEp[1], max.levels = 0)
             #print(TITULO[(temporada_atual*2)-1])
             
             NOTA[(temporada_atual*2)-1] = arrayNotas[1]
@@ -125,7 +125,3 @@
       }
       
       funcaoEpiPorTemp()
-      
-      
-      
-      
