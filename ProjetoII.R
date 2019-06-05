@@ -165,4 +165,22 @@
       print(sprintf("A temporada com menor desvio padrao e: %d", menorDP()))
       
 #Questao 7:
+      arrayPers = got[, 4]
+      arrayNotas = got[, 3]
+      contador = 0
+      somaNotas = 0
+      indexAtual = 0
+      for (x in arrayPers){
+        indexAtual = indexAtual + 1
+        if (grepl("Brienne of Tarth", as.character(x))){#(Gwendoline Christie)
+          contador = contador + 1 
+          somaNotas = somaNotas + arrayNotas[indexAtual]
+          #print(as.character(got$Episodio[indexAtual]))
+          #print(arrayNotas[indexAtual])
+        }
+      }
+      mediaBrienne = somaNotas/contador
+      print(sprintf("A media das notas dos episodios em que Brienne aparece e: %.1f",mediaBrienne))
+
+#Questao 8:
       
