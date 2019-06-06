@@ -234,7 +234,7 @@
         }
         return (aparicoesPorTemp)
       }#Bran Stark(Isaac Hempstead)
-      nome = "Daenerys"
+      nome = "Bran Stark"
       arrayParaHisto = histogramaPersonagem(nome)
       print(arrayParaHisto)
       novoArrayFreq = c()
