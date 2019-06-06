@@ -223,4 +223,43 @@
       }
       print(funcaoDeRepetidos4Temp())
 #Questao 9:
+      histogramaPersonagem = function(personagem){
+        aparicoesPorTemp = c(0, 0, 0, 0, 0, 0, 0, 0)
+        indexAtual = 0
+        for (x in got$Temporada){
+          indexAtual = indexAtual +1
+          if (grepl(personagem, as.character(got$Personagens[indexAtual]))){
+            aparicoesPorTemp[x] = aparicoesPorTemp[x] + 1
+          }
+        }
+        return (aparicoesPorTemp)
+      }#Bran Stark(Isaac Hempstead)
+      nome = "Daenerys"
+      arrayParaHisto = histogramaPersonagem(nome)
+      print(arrayParaHisto)
+      novoArrayFreq = c()
+      indexAtual = 0
+      contador = 0
+      for (x in arrayParaHisto){
+        contador = contador +1
+        if (x > 0){
+          for (y in 1:x){
+            indexAtual = indexAtual +1
+            novoArrayFreq[indexAtual] = contador
+          }
+        }
+      }
+      hist(novoArrayFreq,
+           main = nome,
+           ylab = "Ocorrencia",
+           xlab = "Temporada",
+           border = "black",
+           col = "blue",
+           xlim = c(1, 8),
+           #ylim = c(0,max(arrayParaHisto))
+           ylim = c(0,10)
+          )
+      #print(got$Personagens[1])
+      #print(arrayParaHisto)
+
       
