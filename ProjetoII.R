@@ -63,11 +63,7 @@
         }
       }
       funcaoPrint()
-<<<<<<< HEAD
       
-=======
-
->>>>>>> 550cae62247cfbf1168e48e2534a3e9e353b44f1
 #Questao 5:
       #Funcao que pega o maior e o menor episodio de uma certa temporada (de acordo com a nota)
       funcaoEpiPorTemp = function(){
