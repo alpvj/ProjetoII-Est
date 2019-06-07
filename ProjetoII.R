@@ -188,7 +188,13 @@
 #Questao 8:
       funcaoDeRepetidos4Temp  = function(){
         stringComTodoMundo = ""
-        for (x in 31:40){
+        inicio4 = 0
+        fim4 = 0
+        for (x in got$Temporada){
+          if (x == 4)
+            (inicio4 == 0) ? inicio4 = x : fim4 = x
+        }
+        for (x in inicio4:fim4){
           stringComTodoMundo = paste0(stringComTodoMundo, as.character(arrayPers[x]))
           stringComTodoMundo = paste0(stringComTodoMundo, ",")
         }
@@ -225,32 +231,29 @@
 
 #Questao 9:
       histogramaPersonagem = function(personagem){
-        aparicoesPorTemp = c(0, 0, 0, 0, 0, 0, 0, 0)
+        aparicoesPorTemp = c()
         indexAtual = 0
         for (x in got$Temporada){
           indexAtual = indexAtual +1
           if (grepl(personagem, as.character(got$Personagens[indexAtual]))){
-            aparicoesPorTemp[x] = aparicoesPorTemp[x] + 1
+            aparicoesPorTemp[length(aparicoesPorTemp) + 1] = x
           }
         }
         return (aparicoesPorTemp)
       }
-      nome = "Bran Stark"
-      #nome <- readline(prompt = "Digite o nome do personagem")
-      arrayParaHisto = histogramaPersonagem(nome)
-      novoArrayFreq = c()
-      indexAtual = 0
-      contador = 0
-      for (x in arrayParaHisto){
-        contador = contador +1
-        if (x > 0){
-          for (y in 1:x){
-            indexAtual = indexAtual +1
-            novoArrayFreq[indexAtual] = contador
-          }
+      #nome = "Bran Stark(Isaac Hempstead)"
+      #nome = "Tyrion Lannister(Peter Dinklage)"
+      nome <- readline(prompt = "Digite o nome do personagem: ")
+      localizador = nchar(nome)
+      for (x in 1:nchar(nome)){
+        if (substr(nome, x, x) == '('){
+          localizador = x-1
         }
       }
-      hist(novoArrayFreq,
+      novoNome = substr(nome, 1, localizador)
+      arrayParaHisto = histogramaPersonagem(novoNome)
+      
+      hist(arrayParaHisto,
            main = nome,
            ylab = "Ocorrencia",
            xlab = "Temporada",
@@ -258,5 +261,5 @@
            col = "blue",
            breaks = c(0,1,2,3,4,5,6,7,8),
            xlim = c(0, 8),
-           ylim = c(0,max(arrayParaHisto))
-          )
+           ylim = c(0,8)
+      )
