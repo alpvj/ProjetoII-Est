@@ -231,7 +231,7 @@
       nome = "Bran Stark"
       #nome <- readline(prompt = "Digite o nome do personagem")
       arrayParaHisto = histogramaPersonagem(nome)
-      print(arrayParaHisto)
+      #print(arrayParaHisto)
       novoArrayFreq = c()
       indexAtual = 0
       contador = 0
