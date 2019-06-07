@@ -109,8 +109,6 @@
           #Adicionando nos arrays para criar o dataframe
             TITULO[(temporada_atual*2)-1] = as.character(arrayEp[1])
             TITULO[(temporada_atual*2)] = as.character(arrayEp[length(arrayEp)])
-            #print(arrayEp[1], max.levels = 0)
-            #print(TITULO[(temporada_atual*2)-1])
             
             NOTA[(temporada_atual*2)-1] = arrayNotas[1]
             NOTA[(temporada_atual*2)] = arrayNotas[length(arrayNotas)]
@@ -159,7 +157,6 @@
             melhorTemp = indexAtual
           }
         }
-        #print(arrayDosDP)
         return (melhorTemp)
       }
       print(sprintf("A temporada com menor desvio padrao e: %d", menorDP()))
@@ -172,21 +169,18 @@
       indexAtual = 0
       for (x in arrayPers){
         indexAtual = indexAtual + 1
-        if (grepl("Brienne of Tarth", as.character(x))){#(Gwendoline Christie)
+        if (grepl("Brienne of Tarth", as.character(x))){
           contador = contador + 1 
           somaNotas = somaNotas + arrayNotas[indexAtual]
-          #print(as.character(got$Episodio[indexAtual]))
-          #print(arrayNotas[indexAtual])
         }
       }
       mediaBrienne = somaNotas/contador
-      print(sprintf("A media das notas dos episodios em que Brienne aparece e: %.1f",mediaBrienne))
+      print(sprintf("A media das notas dos episodios em que Brienne of Tarth aparece e: %.1f",mediaBrienne))
 
 #Questao 8:
       funcaoDeRepetidos4Temp  = function(){
         stringComTodoMundo = ""
         for (x in 31:40){
-            #strsplit(as.character(arrayPers[x]), split=",")
           stringComTodoMundo = paste0(stringComTodoMundo, as.character(arrayPers[x]))
           stringComTodoMundo = paste0(stringComTodoMundo, ",")
         }
@@ -207,14 +201,12 @@
             }
           }
         }
-        #print(arrayRepetido)
         arrayDoRetorno = c()
         contador = 0
         indexAtual = 0
         for (x in arrayRepetido){
           indexAtual = indexAtual + 1
           if (x == 1){
-            #print(arrayTodosOsPersonagens[indexAtual])
             contador = contador + 1
             arrayDoRetorno[contador] = arrayTodosOsPersonagens[indexAtual]
           }
@@ -233,7 +225,7 @@
           }
         }
         return (aparicoesPorTemp)
-      }#Bran Stark(Isaac Hempstead)
+      }
       nome = "Bran Stark"
       arrayParaHisto = histogramaPersonagem(nome)
       print(arrayParaHisto)
@@ -256,10 +248,5 @@
            border = "black",
            col = "blue",
            xlim = c(1, 8),
-           #ylim = c(0,max(arrayParaHisto))
            ylim = c(0,10)
           )
-      #print(got$Personagens[1])
-      #print(arrayParaHisto)
-
-      
