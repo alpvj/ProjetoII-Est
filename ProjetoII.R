@@ -63,6 +63,7 @@
         }
       }
       funcaoPrint()
+      
 #Questao 5:
       #Funcao que pega o maior e o menor episodio de uma certa temporada (de acordo com a nota)
       funcaoEpiPorTemp = function(){
@@ -227,6 +228,7 @@
         return (aparicoesPorTemp)
       }
       nome = "Bran Stark"
+      #nome <- readline(prompt = "Digite o nome do personagem")
       arrayParaHisto = histogramaPersonagem(nome)
       print(arrayParaHisto)
       novoArrayFreq = c()
@@ -247,6 +249,7 @@
            xlab = "Temporada",
            border = "black",
            col = "blue",
-           xlim = c(1, 8),
-           ylim = c(0,10)
+           breaks = c(0,1,2,3,4,5,6,7,8),
+           xlim = c(0, 8),
+           ylim = c(0,max(arrayParaHisto))
           )
