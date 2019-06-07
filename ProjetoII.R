@@ -108,14 +108,21 @@
               }
             }
           #Adicionando nos arrays para criar o dataframe
-            TITULO[(temporada_atual*2)-1] = as.character(arrayEp[1])
-            TITULO[(temporada_atual*2)] = as.character(arrayEp[length(arrayEp)])
+            for(x in 1:length(arrayNotas)){
+              if (arrayNotas[x] == arrayNotas[1]){
+                TITULO[length(TITULO)+1] = as.character(arrayEp[x])
+                NOTA[length(NOTA)+1] = arrayNotas[1]
+                TEMPORADA[length(TEMPORADA)+1] = temporada_atual
+              }
+            }
             
-            NOTA[(temporada_atual*2)-1] = arrayNotas[1]
-            NOTA[(temporada_atual*2)] = arrayNotas[length(arrayNotas)]
-            
-            TEMPORADA[(temporada_atual*2)-1] = temporada_atual
-            TEMPORADA[(temporada_atual*2)] = temporada_atual
+            for(x in 1:length(arrayNotas)){
+              if (arrayNotas[x] == arrayNotas[length(arrayNotas)]){
+                TITULO[length(TITULO)+1] = as.character(arrayEp[x])
+                NOTA[length(NOTA)+1] = arrayNotas[length(arrayNotas)]
+                TEMPORADA[length(TEMPORADA)+1] = temporada_atual
+              }
+            }
         
         }
         
@@ -231,7 +238,6 @@
       nome = "Bran Stark"
       #nome <- readline(prompt = "Digite o nome do personagem")
       arrayParaHisto = histogramaPersonagem(nome)
-      #print(arrayParaHisto)
       novoArrayFreq = c()
       indexAtual = 0
       contador = 0
